@@ -44,14 +44,14 @@ xAdmin.Core.RegisterCommand("warns", "View a user's warnings", 30, function(admi
 		return
 	end
 	xWarn.Database.GetWarns(target, function(warns)
-		admin:PrintMessage(HUD_PRINTTALK, "Check your console for the output!")
-		if warns == nil then admin:PrintMessage(HUD_PRINTCONSOLE, "You have no warnings!") return end
+		if warns == nil then xWarn.msg("You have no warnings!", user) return end
 		for k, v in pairs(warns) do
-			admin:PrintMessage(HUD_PRINTCONSOLE, string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time))) -- Example: 
+			xWarn.msg(string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time)), admin)
+			-- Example:
 			-- 1 - "Hi!" (Warned by MilkGames, 12 minutes ago.)
 			-- ID Reason              Admin       Time ago
 		end
-		admin:PrintMessage(HUD_PRINTCONSOLE, table.getn(warns) .. " warnings in total.")
+		xWarn.msg(table.getn(warns) .. " warnings in total.", admin)
 	end)
 end)
 
@@ -60,14 +60,14 @@ end)
 --- #
 xAdmin.Core.RegisterCommand("mywarns", "View your warnings", 0, function(user)
 	xWarn.Database.GetWarns(user:SteamID64(), function(warns)
-		user:PrintMessage(HUD_PRINTTALK, "Check your console for the output!")
-		if warns == nil then user:PrintMessage(HUD_PRINTCONSOLE, "You have no warnings!") return end 
+		if warns == nil then xWarn.msg("You have no warnings!", user) return end 
 		for k, v in pairs(warns) do
-			user:PrintMessage(HUD_PRINTCONSOLE, string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time))) -- Example: 
+			xWarn.msg(string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time)), user)
+			-- Example:
 			-- 1 - "Hi!" (Warned by MilkGames, 12 minutes ago.)
 			-- ID Reason              Admin       Time ago
 		end
-		user:PrintMessage(HUD_PRINTCONSOLE, table.getn(warns) .. " warnings in total.")
+		xWarn.msg(table.getn(warns) .. " warnings in total.", user)
 	end)
 end)
 
