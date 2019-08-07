@@ -25,6 +25,7 @@ xAdmin.Core.RegisterCommand("warn", "Warn a user", 30, function(admin, args)
 
 	xWarn.Database.CreateWarn(target, (IsValid(targetPly) and targetPly:Name()) or "Unknown", admin:SteamID64(), admin:Name(), reason or "No reason given")
 	xAdmin.Core.Msg({admin, " warned ", ((IsValid(targetPly) and targetPly:Name()) or target), " for: ", Color( 255, 0, 0, 255 ), reason})
+	hook.Run("xWarnPlayerWarned", targetPly, admin, reason)
 end)
 
 --- #
@@ -44,6 +45,7 @@ xAdmin.Core.RegisterCommand("warns", "View a user's warnings", 30, function(admi
 	end
 	xWarn.Database.GetWarns(target, function(warns)
 		admin:PrintMessage(HUD_PRINTTALK, "Check your console for the output!")
+		if warns == nil then admin:PrintMessage(HUD_PRINTCONSOLE, "You have no warnings!") return end
 		for k, v in pairs(warns) do
 			admin:PrintMessage(HUD_PRINTCONSOLE, string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time))) -- Example: 
 			-- 1 - "Hi!" (Warned by MilkGames, 12 minutes ago.)
@@ -59,6 +61,7 @@ end)
 xAdmin.Core.RegisterCommand("mywarns", "View your warnings", 0, function(user)
 	xWarn.Database.GetWarns(user:SteamID64(), function(warns)
 		user:PrintMessage(HUD_PRINTTALK, "Check your console for the output!")
+		if warns == nil then user:PrintMessage(HUD_PRINTCONSOLE, "You have no warnings!") return end 
 		for k, v in pairs(warns) do
 			user:PrintMessage(HUD_PRINTCONSOLE, string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time))) -- Example: 
 			-- 1 - "Hi!" (Warned by MilkGames, 12 minutes ago.)
