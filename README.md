@@ -1,6 +1,6 @@
 # xWarn
 An addon for [xAdmin](https://github.com/OwjoTheGreat/xadmin) that allows you to warn players for breaking the rules.
-It doesn't have a UI, thus it uses the developer console to list any warnings a user may have.
+It doesn't have a UI, thus it uses the developer console (or chat) to list any warnings a user may have.
 
 # Requirements
 [xAdmin](https://github.com/OwjoTheGreat/xadmin). If you don't install this xWarn will throw an error and refuse to work.

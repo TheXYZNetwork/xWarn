@@ -86,6 +86,7 @@ xAdmin.Core.RegisterCommand("deletewarn", "Delete a warning (by ID)", 40, functi
 		if warn and warn[1] then
 			xWarn.Database.DestroyWarn(args[1])
 			xAdmin.Core.Msg({admin, " deleted warning with ID ", args[1]})
+			hook.Run("xWarnWarningDeleted", args[1], admin)
 		else 
 			xAdmin.Core.Msg({Color(46, 170, 200), "[xAdmin] ", color_white, "'" .. args[1] .. "' is not a valid ID. Please provide a valid ID."}, admin)
 		end
