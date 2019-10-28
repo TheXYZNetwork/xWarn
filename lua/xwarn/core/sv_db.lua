@@ -1,5 +1,5 @@
 -- Setup
-hook.Add( "PostGamemodeLoaded", "xWarnSetupDB", function() -- Make sure xAdmin's loaded
+hook.Add( "xAdminPostInit", "xWarnSetupDB", function() -- Make sure xAdmin's loaded
 	xAdmin.Database.Query("CREATE TABLE IF NOT EXISTS " .. xAdmin.Info.Name .. "_warns(id INTEGER PRIMARY KEY AUTOINCREMENT, userid VARCHAR(32) NOT NULL, user TEXT NOT NULL, adminid VARCHAR(32) NOT NULL, admin TEXT NOT NULL, reason TEXT(64) NOT NULL, time INT(11) NOT NULL)")
 end )
 
