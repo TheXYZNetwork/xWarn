@@ -4,7 +4,7 @@ hook.Add( "xAdminPostInit", "xWarnSetupDB", function() -- Make sure xAdmin's loa
 end )
 
 function xWarn.Database.CreateWarn(userid, user, adminid, admin, reason, banid)
-	xAdmin.Database.Query(string.format("INSERT INTO %s_warns (userid, user, adminid, admin, reason, time, banid) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", xAdmin.Info.Name, userid, xAdmin.Database.Escape(user) or "Unknown", adminid, xAdmin.Database.Escape(admin) or "Console", xAdmin.Database.Escape(reason) or "No reason given", os.time(), banid))
+	xAdmin.Database.Query(string.format("INSERT INTO %s_warns (userid, user, adminid, admin, reason, time, banid) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %s);", xAdmin.Info.Name, userid, xAdmin.Database.Escape(user) or "Unknown", adminid, xAdmin.Database.Escape(admin) or "Console", xAdmin.Database.Escape(reason) or "No reason given", os.time(), banid or "NULL"))
 end
 
 function xWarn.Database.GetWarns(userid, callback)

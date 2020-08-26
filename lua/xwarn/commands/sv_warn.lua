@@ -28,7 +28,7 @@ xAdmin.Core.RegisterCommand("warn", "Warn a user", 30, function(admin, args)
 		end
 	end
 
-	xWarn.Database.CreateWarn(target, (IsValid(targetPly) and targetPly:Name()) or "Unknown", admin:SteamID64(), admin:Name(), reason or "No reason given")
+	xWarn.Database.CreateWarn(target, (IsValid(targetPly) and targetPly:Name()) or "Unknown", admin:SteamID64(), admin:Name(), reason)
 	xAdmin.Core.Msg({admin, " warned ", ((IsValid(targetPly) and targetPly) or target), " for: ", Color( 255, 0, 0, 255 ), reason})
 	hook.Run("xWarnPlayerWarned", target, targetPly, admin, reason)
 end)
