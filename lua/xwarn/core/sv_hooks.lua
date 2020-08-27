@@ -1,5 +1,6 @@
 if xWarn.Config.WarnOnBan then
 	hook.Add("xAdminPlayerBanned", "xWarnHandleBan", function(target, admin, reason, time, archiveEntryId)
+		if time == 0 then return end -- No need to do this for permabans
 		xWarn.Database.CreateWarn((type(target) == "Player" and target:SteamID64()) or target, (type(target) == "Player" and target:Name()) or "Unknown", 0, "xWarn", "Banned", archiveEntryId)
 		hook.Run("xWarnWarnOnBan", (type(target) == "Player" and target:SteamID64()) or target)
 	end)
