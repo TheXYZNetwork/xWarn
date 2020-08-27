@@ -8,6 +8,7 @@ if not xAdmin then
 	return
 end
 xWarn = {}
+xWarn.Config = {}
 xWarn.Database = {}
 local path = "xwarn/"
 
