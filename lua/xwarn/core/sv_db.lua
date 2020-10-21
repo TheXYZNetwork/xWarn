@@ -5,6 +5,7 @@ hook.Add( "xAdminPostInit", "xWarnSetupDB", function() -- Make sure xAdmin's loa
 	else
 		xAdmin.Database.Query("CREATE TABLE IF NOT EXISTS " .. xAdmin.Config.Name .. "_warns(id INTEGER PRIMARY KEY AUTOINCREMENT, userid VARCHAR(32) NOT NULL, user TEXT NOT NULL, adminid VARCHAR(32) NOT NULL, admin TEXT NOT NULL, reason TEXT(64) NOT NULL, time INT(11) NOT NULL, banid INT(11) DEFAULT NULL)")
 	end
+	print(xAdmin.Config.Name .. "_warns")
 end )
 
 function xWarn.Database.CreateWarn(userid, user, adminid, admin, reason, banid)
