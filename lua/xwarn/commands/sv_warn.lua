@@ -10,7 +10,6 @@ xAdmin.Core.RegisterCommand("warn", "Warn a user", 30, function(admin, args)
 
 	if not target then
 		xAdmin.Core.Msg({xAdmin.Config.ColorLog, "[xWarn] ", color_white, "Please provide a valid target. The following was not recognised: " .. args[1]}, admin)
-
 		return
 	end
 
@@ -28,9 +27,10 @@ xAdmin.Core.RegisterCommand("warn", "Warn a user", 30, function(admin, args)
 		end
 	end
 
-	xWarn.Database.CreateWarn(target, (IsValid(targetPly) and targetPly:Name()) or "Unknown", admin:SteamID64(), admin:Name(), reason)
-	xAdmin.Core.Msg({admin, " warned ", ((IsValid(targetPly) and targetPly) or target), " for: ", Color( 255, 0, 0, 255 ), reason})
-	hook.Run("xWarnPlayerWarned", target, targetPly, admin, reason)
+	xWarn.Database.CreateWarn(target, (IsValid(targetPly) and targetPly:Name()) or "Unknown", admin:SteamID64(), admin:Name(), reason, nil, function(_, q)
+		xAdmin.Core.Msg({admin, " warned ", ((IsValid(targetPly) and targetPly) or target), " for: ", Color(255, 0, 0), reason, color_white, " (", Color(128, 0, 128), q:lastInsert(), color_white, ")"})
+		hook.Run("xWarnPlayerWarned", target, targetPly, admin, reason)
+	end)
 end)
 
 --- #
@@ -45,7 +45,6 @@ xAdmin.Core.RegisterCommand("warns", "View a user's warnings", 30, function(admi
 
 	if not target then
 		xAdmin.Core.Msg({xAdmin.Config.ColorLog, "[xWarn] ", color_white, "Please provide a valid target. The following was not recognised: " .. args[1]}, admin)
-
 		return
 	end
 
