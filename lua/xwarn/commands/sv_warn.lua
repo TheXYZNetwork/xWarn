@@ -28,7 +28,7 @@ xAdmin.Core.RegisterCommand("warn", "Warn a user", 30, function(admin, args)
 	end
 
 	xWarn.Database.CreateWarn(target, (IsValid(targetPly) and targetPly:Name()) or "Unknown", admin:SteamID64(), admin:Name(), reason, nil, function(_, q)
-		xAdmin.Core.Msg({admin, " warned ", ((IsValid(targetPly) and targetPly) or target), " for: ", xWarn.Config.WarnReasonColor, reason})
+		xAdmin.Core.Msg((xWarn.Config.WarnMessageIncludeID) and {admin, " warned ", ((IsValid(targetPly) and targetPly) or target), " for: ", Color(255, 0, 0), reason, color_white, " (", xWarn.Config.WarnMessageIDColor, q:lastInsert(), color_white, ")"} or {admin, " warned ", ((IsValid(targetPly) and targetPly) or target), " for: ", Color(255, 0, 0), reason})
 		hook.Run("xWarnPlayerWarned", target, targetPly, admin, reason)
 	end)
 end)
@@ -49,14 +49,14 @@ xAdmin.Core.RegisterCommand("warns", "View a user's warnings", 30, function(admi
 	end
 
 	xWarn.Database.GetWarns(target, function(warns)
-		if warns == nil then xAdmin.Core.Msg({"This user has no warnings to display."}, user) return end
+		if warns == nil then xAdmin.Core.Msg({"This user has no warnings to display."}, admin) return end
 		for k, v in pairs(warns) do
-			xAdmin.Core.Msg({string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time))}, user)
+			xAdmin.Core.Msg({string.format("%s - \"%s\" (Warned by %s, %s ago.)", v.id, v.reason, v.admin, string.NiceTime(os.time() - v.time))}, admin)
 			-- Example:
 			-- 1 - "Hi!" (Warned by MilkGames, 12 minutes ago.)
 			-- ID Reason              Admin       Time ago
 		end
-		xAdmin.Core.Msg({table.getn(warns) .. " warnings in total."}, user)
+		xAdmin.Core.Msg({table.getn(warns) .. " warnings in total."}, admin)
 	end)
 end)
 
