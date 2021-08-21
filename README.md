@@ -1,6 +1,6 @@
 # xWarn
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 An addon for [xAdmin](https://github.com/OwjoTheGreat/xadmin) that allows you to warn players for breaking the rules.
 It doesn't have a UI, thus it uses the developer console (or chat) to list any warnings a user may have.
@@ -27,6 +27,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/MilkGames"><img src="https://avatars.githubusercontent.com/u/10010026?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MilkGames</b></sub></a><br /><a href="https://github.com/TheXYZNetwork/xWarn/commits?author=MilkGames" title="Code">💻</a> <a href="#maintenance-MilkGames" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://0wain.xyz/"><img src="https://avatars.githubusercontent.com/u/15251181?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Owain</b></sub></a><br /><a href="https://github.com/TheXYZNetwork/xWarn/commits?author=owainjones74" title="Code">💻</a></td>
   </tr>
 </table>
 
