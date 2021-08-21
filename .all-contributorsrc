@@ -1,0 +1,25 @@
+{
+  "projectName": "xWarn",
+  "projectOwner": "TheXYZNetwork",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "MilkGames",
+      "name": "MilkGames",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10010026?v=4",
+      "profile": "https://github.com/MilkGames",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
